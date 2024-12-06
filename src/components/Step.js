@@ -17,7 +17,7 @@ const Step = ({ header, embedUrl, nextPath }) => {
 
 	return (
 		<div className="step-wrapper">
-			<div className="mt-6 text-center">
+			<div className="pt-6 text-center">
 				<h2 className="text-3xl font-semibold mb-4">{header}</h2>
 				<div style={{ minHeight: '700px' }} className="relative">
 					{isLoading && (
