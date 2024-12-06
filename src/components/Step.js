@@ -1,26 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './Step.css';
 import { useNavigate } from 'react-router-dom';
 
 const Step = ({ header, embedUrl, nextPath }) => {
 	const navigate = useNavigate();
+	const [isLoading, setIsLoading] = useState(true);
+
 	return (
-		<div className="flex flex-col items-center justify-center h-screen bg-gray-50">
-			<h2 className="text-2xl font-semibold mb-4">{header}</h2>
-			<div>
-				<iframe
-					src={embedUrl}
-					height={'600px'}
-					className="rounded-md shadow-md"
-					allow="autoplay"
-					title="Onboarding Video"
-				></iframe>
+		<div className="step-wrapper">
+			<div className="mt-6 text-center">
+				<h2 className="text-3xl font-semibold mb-4">{header}</h2>
+				<div style={{ minHeight: '700px' }} className="relative">
+					{isLoading && (
+						<div className="absolute inset-0 flex items-center justify-center text-xl">
+							Some fancy gradient css loader here...
+						</div>
+					)}
+					<video
+						key={embedUrl}
+						autoPlay
+						loop
+						muted
+						playsInline
+						className={`w-full h-auto ${isLoading ? 'hidden' : ''}`}
+						controls={false}
+						style={{ maxHeight: '700px' }}
+						onLoadedData={() => setIsLoading(false)}
+					>
+						<source src={embedUrl} type="video/mp4" />
+						Your browser does not support the video tag.
+					</video>
+				</div>
+				<button
+					style={{ minWidth: '325px' }}
+					className="mt-4 bg-black text-white rounded-md px-4 py-2 hover:bg-gray-800"
+					onClick={() => navigate(nextPath)}
+				>
+					{nextPath === '/' ? 'Back to Home' : 'Next'}
+				</button>
 			</div>
-			<button
-				className="StepButton"
-				onClick={() => navigate(nextPath)}
-			>
-				{ nextPath === '/' ? 'Back to Home' : 'Next' }
-			</button>
 		</div>
 	);
 };
