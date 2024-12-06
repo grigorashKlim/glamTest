@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
-import './Step.css';
+import React,  {useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { reportEvent } from '../reportWebVitals';
 
 const Step = ({ header, embedUrl, nextPath }) => {
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(true);
+	useEffect(() => {
+		setIsLoading(true);
+	}, [embedUrl]);
+	const handleNext = () => {
+		if (nextPath === '/') {
+			reportEvent('onboarding_completed', { timestamp: Date.now() });
+		}
+		navigate(nextPath);
+	};
 
 	return (
 		<div className="step-wrapper">
@@ -34,7 +43,7 @@ const Step = ({ header, embedUrl, nextPath }) => {
 				<button
 					style={{ minWidth: '325px' }}
 					className="mt-4 bg-black text-white rounded-md px-4 py-2 hover:bg-gray-800"
-					onClick={() => navigate(nextPath)}
+					onClick={handleNext}
 				>
 					{nextPath === '/' ? 'Back to Home' : 'Next'}
 				</button>

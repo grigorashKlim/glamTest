@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Step from "./components/Step";
+import Dashboard from "./components/Dashboard";
 
 const App = () => {
     const stepsData = [{
@@ -22,6 +23,7 @@ const App = () => {
           <Router>
               <Routes>
                   <Route path="/" element={<LandingPage />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
                   {stepsData.map(({ header, embedUrl, nextPath }, index) => (<Route
                       key={index}
                       path={`/onboarding/step${index + 1}`}
