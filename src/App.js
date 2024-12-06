@@ -6,17 +6,17 @@ import Dashboard from "./components/Dashboard";
 
 const App = () => {
     const stepsData = [{
-        id: 1,
+        id: 0,
         header: "Welcome to Glam!",
         embedUrl: "https://cdn.getglam.app/content/paywalls/240515_web2web_video1_v04.mp4",
         nextPath: "/onboarding/step2",
     }, {
-        id: 2,
+        id: 1,
         header: "Match your Aesthetic",
         embedUrl: "https://cdn.getglam.app/content/paywalls/240515_web2web_video2_v01.mp4",
         nextPath: "/onboarding/step3",
     }, {
-        id: 3,
+        id: 2,
         header: "Explore 100+ Styles",
         embedUrl: "https://cdn.getglam.app/content/paywalls/240515_web2web_video3_v01.mp4",
         nextPath: "/",

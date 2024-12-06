@@ -26,7 +26,7 @@ const Step = ({ header, embedUrl, nextPath, id }) => {
 						</div>
 					)}
 					<video
-						key={id}
+						key={id + embedUrl}
 						autoPlay
 						loop
 						muted
