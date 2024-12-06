@@ -6,14 +6,17 @@ import Dashboard from "./components/Dashboard";
 
 const App = () => {
     const stepsData = [{
+        id: 1,
         header: "Welcome to Glam!",
         embedUrl: "https://cdn.getglam.app/content/paywalls/240515_web2web_video1_v04.mp4",
         nextPath: "/onboarding/step2",
     }, {
+        id: 2,
         header: "Match your Aesthetic",
         embedUrl: "https://cdn.getglam.app/content/paywalls/240515_web2web_video2_v01.mp4",
         nextPath: "/onboarding/step3",
     }, {
+        id: 3,
         header: "Explore 100+ Styles",
         embedUrl: "https://cdn.getglam.app/content/paywalls/240515_web2web_video3_v01.mp4",
         nextPath: "/",
@@ -24,9 +27,9 @@ const App = () => {
               <Routes>
                   <Route path="/" element={<LandingPage />} />
                   <Route path="/dashboard" element={<Dashboard />} />
-                  {stepsData.map(({ header, embedUrl, nextPath }, index) => (<Route
-                      key={index}
-                      path={`/onboarding/step${index + 1}`}
+                  {stepsData.map(({ header, embedUrl, nextPath, id}) => (<Route
+                      key={id}
+                      path={`/onboarding/step${id + 1}`}
                       element={<Step
                           header={header}
                           embedUrl={embedUrl}

@@ -2,7 +2,7 @@ import React,  {useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { reportEvent } from '../reportWebVitals';
 
-const Step = ({ header, embedUrl, nextPath }) => {
+const Step = ({ header, embedUrl, nextPath, id }) => {
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {
@@ -26,7 +26,7 @@ const Step = ({ header, embedUrl, nextPath }) => {
 						</div>
 					)}
 					<video
-						key={embedUrl}
+						key={id}
 						autoPlay
 						loop
 						muted
