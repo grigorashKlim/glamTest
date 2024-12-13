@@ -2,14 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-### `npm install`
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## To run the app: 
+1. Go to the app's dir
+2. run `docker build -t onboarding-funnel .` to build an image
+3. run the container `docker run -p 3000:80 onboarding-funnel`
+4. open http://localhost:3000/
 
 
 ## Go to [Dashboard](http://localhost:3000/dashboard) to see some simple analytics
