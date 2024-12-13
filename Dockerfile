@@ -19,6 +19,9 @@ RUN npm run build
 # Use a lightweight server to serve the build
 FROM nginx:alpine
 
+# Copy the custom Nginx config
+COPY nginx.conf /etc/nginx/nginx.conf
+
 # Copy the build from the previous step into the nginx server
 COPY --from=build /app/build /usr/share/nginx/html
 
