@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, BrowserRouter} from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Step from "./components/Step";
 import Dashboard from "./components/Dashboard";
@@ -23,21 +23,23 @@ const App = () => {
     },];
   return (
       <div className="bg-blue-50" style={{ minHeight: '100vh' }}>
-          <Router>
-              <Routes>
-                  <Route path="/" element={<LandingPage />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  {stepsData.map(({ header, embedUrl, nextPath, id}) => (<Route
-                      key={id}
-                      path={`/onboarding/step${id + 1}`}
-                      element={<Step
-                          header={header}
-                          embedUrl={embedUrl}
-                          nextPath={nextPath}
-                      />}
-                  />))}
-              </Routes>
-          </Router>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
+              <Router>
+                  <Routes>
+                      <Route path="/" element={<LandingPage />} />
+                      <Route path="/dashboard" element={<Dashboard />} />
+                      {stepsData.map(({ header, embedUrl, nextPath, id}) => (<Route
+                          key={id}
+                          path={`/onboarding/step${id + 1}`}
+                          element={<Step
+                              header={header}
+                              embedUrl={embedUrl}
+                              nextPath={nextPath}
+                          />}
+                      />))}
+                  </Routes>
+              </Router>
+          </BrowserRouter>
       </div>
   );
 };
